@@ -96,8 +96,8 @@ body::after {
 }
 
 .shape-heart {
-  top: 11vh;
-  right: 11vw;
+  top: 30vh;
+  right: 16vw;
   width: min(11vw, 170px);
   height: min(11vw, 170px);
   color: var(--ink-red);
@@ -106,7 +106,7 @@ body::after {
 
 .shape-star {
   top: 44vh;
-  left: 9vw;
+  left: 16vw;
   width: min(12vw, 185px);
   height: min(12vw, 185px);
   color: var(--ink-yellow);
@@ -114,8 +114,8 @@ body::after {
 }
 
 .shape-note {
-  bottom: 9vh;
-  right: 19vw;
+  bottom: 14vh;
+  right: 24vw;
   width: min(7vw, 105px);
   height: min(10vw, 150px);
   color: var(--ink-black);
@@ -169,14 +169,23 @@ body::after {
   bottom: 4vh;
   left: 4vw;
   z-index: 1;
-  font-family: inherit;
-  font-size: 1.4rem;
   color: var(--pencil);
   background: none;
   border: none;
-  border-bottom: 1.5px dashed currentColor;
   cursor: pointer;
-  padding: 0 2px;
+  padding: 6px;
+  line-height: 0;
+}
+
+.erase svg {
+  display: block;
+  width: 26px;
+  height: 26px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .erase:hover {
