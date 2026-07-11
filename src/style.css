@@ -55,27 +55,16 @@ body::after {
   pointer-events: none;
 }
 
+/* real handwritten signature; the smear is baked into the image */
 .name {
   position: fixed;
   top: 8vh;
   left: 7vw;
   z-index: 1;
-  font-weight: 700;
-  font-size: clamp(3.5rem, 7vw, 6rem);
-  line-height: 1;
-  letter-spacing: 0.01em;
+  width: min(46vw, 620px);
+  height: auto;
   transform: rotate(-2deg);
-  filter: url(#smudge);
-}
-
-/* the smear: a blurred, dragged ghost of the same ink */
-.name::before {
-  content: attr(data-text);
-  position: absolute;
-  inset: 0;
-  transform: skewX(-14deg) translate(9px, 2px);
-  filter: blur(3px);
-  opacity: 0.3;
+  pointer-events: none;
 }
 
 .shape {
