@@ -1,0 +1,239 @@
+/* z-index scale: 1 shapes/name/erase · 2 ink layer · 4 grain overlay */
+
+:root {
+  --paper: #faf6ee;
+  --ink-black: #1c1b19;
+  --ink-red: #d1342f;
+  --ink-yellow: #e6a817;
+  --pencil: #8a8272;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100dvh;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink-black);
+  font-family: 'Caveat', cursive;
+  overflow: hidden;
+}
+
+/* faint paper grain */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");
+}
+
+/* ---------- front page ---------- */
+
+.home {
+  cursor: crosshair;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+#ink {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.name {
+  position: fixed;
+  top: 8vh;
+  left: 7vw;
+  z-index: 1;
+  font-weight: 700;
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 1;
+  letter-spacing: 0.01em;
+  transform: rotate(-2deg);
+  filter: url(#smudge);
+}
+
+/* the smear: a blurred, dragged ghost of the same ink */
+.name::before {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  transform: skewX(-14deg) translate(9px, 2px);
+  filter: blur(3px);
+  opacity: 0.3;
+}
+
+.shape {
+  position: fixed;
+  z-index: 1;
+  display: block;
+  color: var(--ink-black);
+  text-decoration: none;
+}
+
+.shape svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.shape path,
+.shape ellipse,
+.stub-mark path,
+.stub-mark ellipse {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 0.1 7.5;
+  opacity: 0.55;
+}
+
+.shape-heart {
+  top: 11vh;
+  right: 11vw;
+  width: min(11vw, 170px);
+  height: min(11vw, 170px);
+  color: var(--ink-red);
+  transform: rotate(-6deg);
+}
+
+.shape-star {
+  top: 44vh;
+  left: 9vw;
+  width: min(12vw, 185px);
+  height: min(12vw, 185px);
+  color: var(--ink-yellow);
+  transform: rotate(5deg);
+}
+
+.shape-note {
+  bottom: 9vh;
+  right: 19vw;
+  width: min(7vw, 105px);
+  height: min(10vw, 150px);
+  color: var(--ink-black);
+  transform: rotate(-4deg);
+}
+
+.label {
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.4rem);
+  transform: translateX(-50%) rotate(2deg);
+  white-space: nowrap;
+  font-size: 1.5rem;
+  color: var(--pencil);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.shape:hover .label,
+.shape:focus-visible .label {
+  opacity: 1;
+}
+
+.shape:focus-visible {
+  outline: 2px dashed var(--pencil);
+  outline-offset: 10px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shape:hover svg {
+    animation: wiggle 0.5s ease-in-out;
+  }
+}
+
+@keyframes wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(2.5deg);
+  }
+  65% {
+    transform: rotate(-2deg);
+  }
+}
+
+.erase {
+  position: fixed;
+  bottom: 4vh;
+  left: 4vw;
+  z-index: 1;
+  font-family: inherit;
+  font-size: 1.4rem;
+  color: var(--pencil);
+  background: none;
+  border: none;
+  border-bottom: 1.5px dashed currentColor;
+  cursor: pointer;
+  padding: 0 2px;
+}
+
+.erase:hover {
+  color: var(--ink-black);
+}
+
+/* ---------- stub subpages ---------- */
+
+.stub {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+  overflow: auto;
+}
+
+.stub main {
+  display: grid;
+  justify-items: center;
+  gap: 1.2rem;
+  text-align: center;
+  transform: rotate(-1deg);
+}
+
+.stub-mark {
+  width: 90px;
+  height: 100px;
+}
+
+.stub h1 {
+  font-weight: 700;
+  font-size: 3.2rem;
+  line-height: 1;
+}
+
+.stub p {
+  font-size: 1.6rem;
+  color: var(--pencil);
+}
+
+.home-link {
+  position: fixed;
+  top: 4vh;
+  left: 4vw;
+  font-size: 1.6rem;
+  color: var(--ink-black);
+  text-decoration: none;
+  border-bottom: 1.5px dashed var(--pencil);
+  transform: rotate(-2deg);
+}
