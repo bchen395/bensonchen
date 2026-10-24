@@ -1,12 +1,10 @@
-import '@fontsource/caveat/400.css'
-import '@fontsource/caveat/700.css'
 import './style.css'
 import { pieces } from './love-data.js'
 
 const stage = document.getElementById('piece')
 const button = document.getElementById('another')
 
-// ---------- deal from a shuffled deck so nothing repeats until all 32 are seen ----------
+// ---------- deal from a shuffled deck so nothing repeats until all 31 are seen ----------
 
 let deck = []
 
@@ -70,7 +68,7 @@ function renderLink(piece) {
 
 function renderQuote(piece) {
   const frame = el('div', 'piece-media piece-media-text')
-  frame.append(el('blockquote', 'piece-quote', piece.text))
+  frame.append(el('blockquote', 'piece-quote', `“${piece.text}”`))
   return [frame, caption(`— ${piece.author}`)]
 }
 
