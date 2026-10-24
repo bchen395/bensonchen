@@ -4,12 +4,6 @@
 export const pieces = [
   {
     kind: 'image',
-    src: '/love/commandements.jpg',
-    title: "Tess's Ten Commandments",
-    note: 'Developed over a bike ride in Florida.',
-  },
-  {
-    kind: 'image',
     src: '/love/shangchi.jpg',
     title: 'Instagram caption about family',
     note: 'During the release of "Shangchi", 88rising wrote this caption. It’s cheesy. It’s lovely.',

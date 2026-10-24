@@ -161,23 +161,14 @@ body::after {
   bottom: 4vh;
   left: 4vw;
   z-index: 1;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
   color: var(--pencil);
   background: none;
   border: none;
+  border-bottom: 1.5px dashed var(--pencil);
+  padding: 0 0 2px;
   cursor: pointer;
-  padding: 6px;
-  line-height: 0;
-}
-
-.erase svg {
-  display: block;
-  width: 26px;
-  height: 26px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
 }
 
 .erase:hover {
@@ -232,6 +223,7 @@ body::after {
 
 .love {
   overflow: auto;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .love main {
@@ -240,7 +232,7 @@ body::after {
   align-content: center;
   gap: 2rem;
   min-height: 100dvh;
-  padding: 14vh 6vw 8vh;
+  padding: 14vh 6vw 14vh;
 }
 
 .piece {
@@ -368,13 +360,16 @@ body::after {
 
 /* quote attributions read as handwriting, not a headline */
 .piece[data-kind='quote'] .piece-title {
-  font-family: 'Caveat', cursive;
   font-weight: 400;
   font-size: 1.5rem;
   color: var(--pencil);
 }
 
 .another {
+  position: fixed;
+  bottom: 5vh;
+  left: 50%;
+  transform: translateX(-50%);
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 1rem;
   color: var(--pencil);
