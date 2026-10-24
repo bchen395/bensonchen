@@ -1,4 +1,4 @@
-/* z-index scale: 1 shapes/name/erase · 2 ink layer · 4 grain overlay */
+/* z-index scale: 1 shapes/name · 4 grain overlay */
 
 :root {
   --paper: #ffffff;
@@ -40,22 +40,6 @@ body::after {
 }
 
 /* ---------- front page ---------- */
-
-.home {
-  cursor: crosshair;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: none;
-}
-
-#ink {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  pointer-events: none;
-}
 
 /* real handwritten signature; the smear is baked into the image */
 .name {
@@ -165,27 +149,45 @@ body::after {
   stroke-width: 3.4;
 }
 
-.erase {
-  position: fixed;
-  bottom: 4vh;
-  left: 4vw;
-  z-index: 1;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1rem;
-  color: var(--pencil);
-  background: none;
-  border: none;
-  background-image: var(--dotted-underline);
-  background-repeat: repeat-x;
-  background-position: left bottom;
-  background-size: 7.6px 2.6px;
-  padding-bottom: 5px;
-  padding: 0 0 5px;
-  cursor: pointer;
+.defs {
+  position: absolute;
 }
 
-.erase:hover {
-  color: var(--ink-black);
+/* hover footage: a landscape frame centered on the shape.
+   Touch screens have no hover, so they never show (or download) it. */
+.reel {
+  display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .reel {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    width: min(36vw, 560px);
+    aspect-ratio: 16 / 9;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .shape:hover .reel,
+  .shape:focus-visible .reel {
+    opacity: 1;
+  }
+
+  .shape svg {
+    filter: url(#dot-ring);
+  }
+
+  .label {
+    color: var(--paper);
+    text-shadow: 0 1px 6px rgb(0 0 0 / 0.6);
+  }
 }
 
 /* ---------- stub subpages ---------- */
@@ -221,19 +223,29 @@ body::after {
   color: var(--pencil);
 }
 
+/* the front-page signature, shrunk to text size; hover thickens the pen line */
 .home-link {
   position: fixed;
   top: 4vh;
   left: 4vw;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1.1rem;
-  color: var(--ink-black);
-  text-decoration: none;
-  background-image: var(--dotted-underline);
-  background-repeat: repeat-x;
-  background-position: left bottom;
-  background-size: 7.6px 2.6px;
-  padding-bottom: 5px;
+}
+
+.home-link img {
+  display: block;
+  width: 7.5rem;
+  height: auto;
+  transition: filter 0.15s ease;
+}
+
+.home-link:hover img,
+.home-link:focus-visible img {
+  filter: url(#ink-bold);
+}
+
+.home-link:focus-visible {
+  outline: 2px dashed var(--pencil);
+  outline-offset: 6px;
+  border-radius: 4px;
 }
 
 /* ---------- things i love ---------- */

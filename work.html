@@ -6,7 +6,25 @@
     <title>work · Benson Chen</title>
   </head>
   <body class="stub">
-    <a class="home-link" href="/">benson chen</a>
+    <a class="home-link" href="/"><img src="/name.png" alt="Benson Chen" /></a>
+    <!-- hover bold: thicken only the solid pen line (alpha > ~0.75), never the faint smear -->
+    <svg class="defs" width="0" height="0" aria-hidden="true">
+      <filter id="ink-bold">
+        <feComponentTransfer in="SourceAlpha">
+          <feFuncA type="linear" slope="8" intercept="-6" />
+        </feComponentTransfer>
+        <feGaussianBlur stdDeviation="0.5" />
+        <feComponentTransfer result="grown">
+          <feFuncA type="linear" slope="3" />
+        </feComponentTransfer>
+        <feFlood flood-color="#1c1b19" />
+        <feComposite in2="grown" operator="in" />
+        <feMerge>
+          <feMergeNode in="SourceGraphic" />
+          <feMergeNode />
+        </feMerge>
+      </filter>
+    </svg>
     <main>
       <svg class="stub-mark" viewBox="0 0 100 100" aria-hidden="true" style="color: #e6a817">
         <path d="M50 6 L61 38 L96 38 L68 59 L78 93 L50 72 L22 93 L32 59 L4 38 L39 38 Z" />
