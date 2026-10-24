@@ -20,6 +20,11 @@ export const pieces = [
     title: 'Carl Jung',
     note: 'Something to consider.',
   },
+  {
+    kind: 'image',
+    src: '/love/ellie.jpeg',
+    title: 'ellie <3',
+  },
 
   {
     kind: 'link',
