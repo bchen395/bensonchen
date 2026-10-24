@@ -12,6 +12,7 @@
     <a class="shape shape-heart" href="/love.html" data-ink="#d1342f" aria-label="Things I love">
       <svg viewBox="0 0 100 100" aria-hidden="true">
         <path
+          pathLength="38"
           d="M50 87 C22 64 9 47 9 31 C9 15 20 7 31 7 C41 7 47 13 50 21 C53 13 59 7 69 7 C80 7 91 15 91 31 C91 47 78 64 50 87 Z"
         />
       </svg>
@@ -20,15 +21,19 @@
 
     <a class="shape shape-star" href="/work.html" data-ink="#e6a817" aria-label="My work">
       <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path d="M50 6 L76 86 L8 36 L92 36 L24 86 Z" />
+        <path pathLength="50" d="M50 6 L59.75 36 L92 36 L65.97 55.14 L76 86 L50 66.88 L24 86 L34.03 55.14 L8 36 L40.25 36 Z" />
       </svg>
       <span class="label">work</span>
     </a>
 
     <a class="shape shape-note" href="/music.html" data-ink="#1c1b19" aria-label="Music">
       <svg viewBox="0 0 70 100" aria-hidden="true">
-        <ellipse cx="24" cy="82" rx="15" ry="11" transform="rotate(-18 24 82)" />
-        <path d="M38 79 L38 12 C50 19 60 26 60 42" />
+        <!-- an oval dot sits where the stem meets it (38, 76.66); the stem starts one step above -->
+        <ellipse pathLength="11" style="stroke-dashoffset: 0.1" cx="24" cy="82" rx="15" ry="11" transform="rotate(-18 24 82)" />
+        <path
+          style="stroke-dasharray: 0.01 7.175 0.01 7.175 0.01 7.175 0.01 7.175 0.01 7.175 0.01 7.175 0.01 7.175 0.01 7.175 0.01 7.871 0.01 7.871 0.01 7.871 0.01 7.871 0.01 7.851 0.01 50"
+          d="M38 69.48 L38 12 C50 19 60 26 60 42"
+        />
       </svg>
       <span class="label">music</span>
     </a>

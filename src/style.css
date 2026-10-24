@@ -96,6 +96,13 @@ body::after {
   opacity: 0.55;
 }
 
+/* pathLength is the dot count, so one dash per unit spaces dots evenly and closes cleanly;
+   the note stem sets its own dasharray to land a dot on its corner */
+.shape path,
+.shape ellipse {
+  stroke-dasharray: 0.001 0.999;
+}
+
 .shape-heart {
   top: 30vh;
   right: 16vw;
