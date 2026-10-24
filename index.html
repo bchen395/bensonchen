@@ -20,9 +20,7 @@
 
     <a class="shape shape-star" href="/work.html" data-ink="#e6a817" aria-label="My work">
       <svg viewBox="0 0 100 100" aria-hidden="true">
-        <path
-          d="M50 6 L61 38 L96 38 L68 59 L78 93 L50 72 L22 93 L32 59 L4 38 L39 38 Z"
-        />
+        <path d="M50 6 L76 86 L8 36 L92 36 L24 86 Z" />
       </svg>
       <span class="label">work</span>
     </a>
@@ -35,7 +33,13 @@
       <span class="label">music</span>
     </a>
 
-    <button class="erase" id="erase" type="button" data-no-draw>erase</button>
+    <button class="erase" id="erase" type="button" data-no-draw aria-label="Erase everything" title="Erase everything">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="m7 21-4.3-4.3a1.7 1.7 0 0 1 0-2.4l9.6-9.6a1.7 1.7 0 0 1 2.4 0l5.6 5.6a1.7 1.7 0 0 1 0 2.4L13 21" />
+        <path d="M22 21H7" />
+        <path d="m5 11 9 9" />
+      </svg>
+    </button>
 
     <svg id="ink" aria-hidden="true"></svg>
 
