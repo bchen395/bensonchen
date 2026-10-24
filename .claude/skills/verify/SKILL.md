@@ -25,13 +25,10 @@ No test runner. Drive with Playwright against installed Chrome (no browser downl
 
 Flows worth driving on the front page:
 
-- Drag starting on heart / star / note / empty paper → stroke colored `#d1342f` / `#e6a817` / `#1c1b19` / `#1c1b19`, appended as `<path>` inside `#ink`. Ink may spill anywhere (unclipped by design).
-- Quick click (< 5px movement) on a shape → navigates to its page; any drag ≥ 5px must NOT navigate.
-- Reload → strokes restored from localStorage key `bensonchen:ink:v1`.
-- Cmd/Ctrl+Z → removes last stroke only. "erase" button → clears strokes + storage.
+- Click a shape → navigates to its page.
 - Hover a shape → `.label` fades to opacity 1; first Tab focuses the heart link.
+- After load, all three `/video/*.mp4` are fetched in the background. Hover a shape → its `video[data-reel]` fades in and plays; leave → it pauses ~300ms later and resumes from there on the next hover. A touch context (`hasTouch`, `isMobile`) must make zero `/video/` requests.
 
 ## Gotchas
 
-- Strokes are stored in viewport px; screenshots at different viewport sizes shift shape positions (they're vw/vh positioned). Use a fixed viewport (1400x900) for comparisons.
-- Playwright's `page.mouse.click()` has no movement, so it exercises the navigate path; use manual `mouse.down()/move()/up()` sequences for the draw path.
+- Shapes are vw/vh positioned, so screenshots at different viewport sizes shift them. Use a fixed viewport (1400x900) for comparisons.
