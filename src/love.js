@@ -39,7 +39,7 @@ const el = (tag, className, text) => {
 
 function caption(title, note) {
   const box = el('div', 'piece-caption')
-  box.append(el('h2', 'piece-title', title))
+  if (title) box.append(el('h2', 'piece-title', title))
   if (note) box.append(el('p', 'piece-note', note))
   return box
 }
@@ -63,7 +63,7 @@ function renderLink(piece) {
   link.target = '_blank'
   link.rel = 'noopener noreferrer'
   frame.append(link)
-  return [frame, caption('read it ↗', piece.note)]
+  return [frame, caption(null, piece.note)]
 }
 
 function renderQuote(piece) {

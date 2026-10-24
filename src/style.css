@@ -6,6 +6,8 @@
   --ink-red: #d1342f;
   --ink-yellow: #e6a817;
   --pencil: #8a8272;
+  /* round dots matching the shapes: 2.6px wide, 7.6px pitch, 55% opacity */
+  --dotted-underline: radial-gradient(circle at 1.3px 1.3px, color-mix(in srgb, var(--pencil) 55%, transparent) 1.3px, transparent 1.4px);
 }
 
 * {
@@ -166,8 +168,12 @@ body::after {
   color: var(--pencil);
   background: none;
   border: none;
-  border-bottom: 1.5px dashed var(--pencil);
-  padding: 0 0 2px;
+  background-image: var(--dotted-underline);
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: 7.6px 2.6px;
+  padding-bottom: 5px;
+  padding: 0 0 5px;
   cursor: pointer;
 }
 
@@ -216,7 +222,11 @@ body::after {
   font-size: 1.1rem;
   color: var(--ink-black);
   text-decoration: none;
-  border-bottom: 1.5px dashed var(--pencil);
+  background-image: var(--dotted-underline);
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: 7.6px 2.6px;
+  padding-bottom: 5px;
 }
 
 /* ---------- things i love ---------- */
@@ -293,7 +303,11 @@ body::after {
   color: var(--ink-black);
   text-decoration: none;
   text-wrap: balance;
-  border-bottom: 2px dashed var(--pencil);
+  background-image: var(--dotted-underline);
+  background-repeat: repeat-x;
+  background-position: left bottom;
+  background-size: 7.6px 2.6px;
+  padding-bottom: 5px;
 }
 
 .piece-link:hover {
@@ -370,16 +384,26 @@ body::after {
   bottom: 5vh;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 1rem;
   color: var(--pencil);
   background: none;
   border: none;
-  border-bottom: 1.5px dashed var(--pencil);
-  padding: 0 0 2px;
+  padding: 0;
+  line-height: 0;
   cursor: pointer;
+}
+
+.another svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  transition: stroke-width 0.15s;
 }
 
 .another:hover {
   color: var(--ink-black);
+}
+
+.another:hover svg {
+  stroke-width: 2.2;
 }
